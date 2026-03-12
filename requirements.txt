@@ -1,0 +1,21 @@
+# Web Framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# MongoDB Async Driver
+motor==3.6.0
+pymongo>=4.6.0
+
+# LLM Provider
+openai==1.51.0
+
+# Data Validation
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Logging
+loguru==0.7.2
+
+# Testing
+pytest==8.3.3
+pytest-asyncio==0.24.0
