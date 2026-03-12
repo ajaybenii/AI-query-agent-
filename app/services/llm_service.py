@@ -313,7 +313,7 @@ class LLMService:
             model=self.settings.openai_model,
             temperature=0.3,
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=500,
+            max_completion_tokens=500,
         )
         return response.choices[0].message.content.strip()
 
