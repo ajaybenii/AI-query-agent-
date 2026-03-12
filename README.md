@@ -138,6 +138,39 @@ curl http://localhost:8000/api/v1/health
 
 ---
 
+## 🚀 Deployment Guide (Render + Netlify)
+
+This project is structured for easy deployment with the Backend on **Render** and the Frontend on **Netlify**.
+
+### 1. Deploy Backend to Render
+1. Push this repository to GitHub.
+2. Go to [Render](https://render.com/), click **New +**, and select **Web Service**.
+3. Connect your GitHub repository.
+4. Render should automatically detect it's a Python app. Use these settings:
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+5. Click **Advanced** and add the following **Environment Variables**:
+   - `MONGODB_URL`: Your MongoDB Atlas connection string (e.g., `mongodb+srv://...`)
+   - `MONGODB_DB_NAME`: `erp_system`
+   - `LLM_PROVIDER`: `openai`
+   - `OPENAI_API_KEY`: Your OpenAI secret key
+   - `OPENAI_MODEL`: `gpt-5.2`
+   - `APP_ENV`: `production`
+6. Deploy! Copy the Render URL once it's live (e.g., `https://ai-query-agent.onrender.com`).
+
+### 2. Deploy Frontend to Netlify
+1. Go to [Netlify](https://www.netlify.com/) and click **Add new site > Import an existing project**.
+2. Connect your GitHub repository.
+3. In the setup step, specify the **Base directory**:
+   - **Base directory:** `frontend`
+   - **Build command:** `npm run build`
+   - **Publish directory:** `frontend/dist`
+4. Click **Add environment variables** and add:
+   - `VITE_API_URL`: The **Render URL** you copied in Step 1 (e.g., `https://ai-query-agent.onrender.com`).
+5. Deploy the site! Netlify will build the React app and deploy it globally.
+
+---
+
 ## 📡 API Reference
 
 ### `POST /api/v1/query`
