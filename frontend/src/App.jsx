@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Clock, CheckCircle2, AlertCircle } from 'lucide-react';
 import './index.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://ai-query-agent.onrender.com';
 
 function App() {
   const [messages, setMessages] = useState([
